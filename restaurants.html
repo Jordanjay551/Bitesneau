@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurants - BitesNearU</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>Local Stores & Restaurants</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="search.html">Search</a>
+  <a href="restaurants.html">Restaurants</a>
+  <a href="cart.html">Cart</a>
+  <a href="signup.html">Sign Up</a>
+</nav>
+
+<div class="container" id="restaurantList">
+  <h2>Available Stores</h2>
+
+  <div class="card">
+    <h3>GreenGrocer Market</h3>
+    <p>Surplus fruits & veg boxes • £3.99</p>
+    <button onclick="addToCart('GreenGrocer Box')">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>FreshBake Bakery</h3>
+    <p>End-of-day pastry bags • £2.50</p>
+    <button onclick="addToCart('Bakery Bag')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="footer">© 2025 BitesNearU</div>
+
+<script src="script.js"></script>
+</body>
+</html>
