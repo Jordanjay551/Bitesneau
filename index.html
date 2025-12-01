@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BitesNearU — Save food. Save money.</title>
+  <meta name="description" content="BitesNearU: Find affordable near-expiry food pickups from local shops. Fight food waste, save money, support local stores." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2G3Q7o5y3yZkQf2zq+j3kUs3k8b3t0v+g6g0w3s=" crossorigin=""/>
+  <meta name="theme-color" content="#0b6e4f">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">BitesNearU <span class="tag">BNU</span></a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#map">Map</a>
+        <a href="#stores">Shops</a>
+        <a href="#contact">Get involved</a>
+      </nav>
+      <button id="cta-open" class="btn primary">Get the app (demo)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>BitesNearU — Food that would go to waste, saved & shared locally</h1>
+          <p class="lead">
+            Affordable near-expiry food from local cafes, restaurants and supermarkets. Quick pickups shown on a map — save money and help cut food waste.
+          </p>
+          <div class="hero-actions">
+            <button id="cta-map" class="btn secondary">View local pickups</button>
+            <button id="cta-signup" class="btn outline">Become a partner</button>
+          </div>
+          <ul class="benefits">
+            <li>Save money — discounted ready-made meals</li>
+            <li>Reduce food waste — help the environment</li>
+            <li>Support local shops — extra revenue for surplus food</li>
+          </ul>
+        </div>
+        <div class="hero-map-preview" aria-hidden="true">
+          <div id="mini-map" class="mini-map" title="Map preview"></div>
+          <p class="mini-caption">Live map with local pick-up spots</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="container how-it-works">
+      <h2>How BitesNearU works</h2>
+      <div class="grid-3">
+        <article>
+          <h3>1. Shops list surplus</h3>
+          <p>Restaurants, cafes and supermarkets post discounted items that are nearing expiry and specify pickup windows.</p>
+        </article>
+        <article>
+          <h3>2. You grab & collect</h3>
+          <p>Find nearby options on the map, reserve or pay in-app and pick up within the time window.</p>
+        </article>
+        <article>
+          <h3>3. Earn & track</h3>
+          <p>Earn loyalty points, track your community sustainability impact, and help reduce carbon footprint.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="map" class="container map-section">
+      <h2>Find pickups near you</h2>
+      <p class="muted">Demo map — move around and click the markers to see sample offers.</p>
+      <div id="mapid" class="map" role="application" aria-label="Pickup locations map"></div>
+    </section>
+
+    <section id="stores" class="container stores">
+      <h2>Available pickups</h2>
+      <div id="store-list" class="store-list" aria-live="polite"></div>
+    </section>
+
+    <section id="about" class="container about">
+      <h2>Why this matters</h2>
+      <p>
+        Most solutions rely on donations or redistribution. BitesNearU creates a consumer-facing lane — everyday people can save money while reducing waste.
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <h3>Customer segments</h3>
+          <ul>
+            <li>University Students</li>
+            <li>Families on a budget</li>
+            <li>Eco-conscious individuals</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Value propositions</h3>
+          <ul>
+            <li>Fight food waste</li>
+            <li>Affordability & loyalty points</li>
+            <li>Revenue stream and lower carbon footprint for stores</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2>Get involved</h2>
+      <p>Interested in partnering or testing the app at your store? Drop your details and we’ll reach out (demo only).</p>
+      <form id="contact-form" class="contact-form" novalidate>
+        <label>
+          Your name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="3"></textarea>
+        </label>
+        <button type="submit" class="btn primary">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> BitesNearU — Demo. Built for sustainability.</p>
+      <nav aria-label="footer">
+        <a href="#how">How it works</a>
+        <a href="#map">Map</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Modal for demo app actions -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-panel" role="document">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <h3 id="modal-title">Demo app</h3>
+      <div id="modal-body">
+        <p>This is a functional front-end demo. To convert to a full app, hook up an API to provide live offers and secure payments.</p>
+        <p><strong>Loyalty points demo:</strong> Reserve an item from the map or list to earn 10 points.</p>
+        <p>Your points: <span id="points">0</span></p>
+        <div class="modal-actions">
+          <button id="close-ok" class="btn primary">Thanks — close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-V6bK2tTt9gWwRk0jXG6xLr2n9rk72j4g5v4v+TnYJxw=" crossorigin=""></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
